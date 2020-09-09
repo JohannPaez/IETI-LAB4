@@ -20,7 +20,7 @@ export class Login extends React.Component{
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         if (localStorage.getItem('users') == null) {
-            localStorage.setItem('users', '[{"username": "Johann Paez", "email": "johann.paez@mail.escuelaing.edu.co", "passwd": "Prueba123@"}, {"username": "Johann Paez", "email": "najoh2907@hotmail.com", "passwd": "asd"}]');
+            localStorage.setItem('users', '[{"username": "Johann Paez", "email": "johann.paez@mail.escuelaing.edu.co", "passwd": "Prueba123@"}, {"username": "Sebastian Campos", "email": "najoh2907@hotmail.com", "passwd": "asd"}]');
         }
     }
 
@@ -90,9 +90,11 @@ export class Login extends React.Component{
         var flag = false;
         
         for (var i = 0; i < users.length; i++) {            
-            if (this.state.email == users[i].email && this.state.passwd == users[i].passwd) {   
+            if (this.state.email === users[i].email && this.state.passwd === users[i].passwd) {   
                 flag = true;
-                localStorage.setItem('isLoggedIn', true);                
+                localStorage.setItem("username", users[i].username);
+                localStorage.setItem("email", users[i].email);                
+                localStorage.setItem('isLoggedIn', true);
                 this.props.history.push("/home");
                 return;
             }

@@ -19,9 +19,10 @@ import AccountBoxIcon from '@material-ui/icons/AccountBox';
 import TodoApp from './TodoApp';
 import CloseIcon from '@material-ui/icons/Close';
 import App from '../App';
+import EmailIcon from '@material-ui/icons/Email';
 
 
-const drawerWidth = 240;
+const drawerWidth = 300;
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -149,13 +150,18 @@ export default function SidebarPage() {
         </div>
         <Divider />
 
-        <List>
-          {['Juan Garcia'].map((text, index) => (
-            <ListItem button key={text}>
+        <List>      
+            <ListItem button key={"username"}>
               <ListItemIcon>{<AccountBoxIcon />}</ListItemIcon>
-              <ListItemText primary={text} />
+              <ListItemText primary={localStorage.getItem("username")} />
             </ListItem>
-          ))}
+        </List>
+
+        <List>      
+            <ListItem button key={"email"}>
+              <ListItemIcon>{<EmailIcon />}</ListItemIcon>
+              <ListItemText primary={localStorage.getItem("email")} />
+            </ListItem>
         </List>
 
         <Divider />

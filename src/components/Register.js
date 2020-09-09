@@ -83,15 +83,20 @@ export default function Register(props) {
     event.preventDefault();
     verifyNoError();
     console.log(formulario);
-    if (formulario.passwd != formulario.passwdConfirm || (formulario.passwd === "" || formulario.passwdConfirm === "")) {
+    if (formulario.passwd !== formulario.passwdConfirm || (formulario.passwd === "" || formulario.passwdConfirm === "")) {
       alert("Las contraseñas no coinciden o son vacias, intente nuevamente!");
       return;
+    }
+    if (localStorage.getItem('users') == null) {
+      localStorage.setItem('users', '[{"username": "Johann Paez", "email": "johann.paez@mail.escuelaing.edu.co", "passwd": "Prueba123@"}, {"username": "Sebastian Campos", "email": "najoh2907@hotmail.com", "passwd": "asd"}]');
     }
     var userAdd = {username: formulario.fullName, email: formulario.email, passwd: formulario.passwd};
     var users = localStorage.getItem("users");
     var jsonUsers = JSON.parse(users);
     jsonUsers.push(userAdd);
     localStorage.setItem("users", JSON.stringify(jsonUsers));
+    localStorage.setItem("username", formulario.fullName);
+    localStorage.setItem("email", formulario.email);                
     localStorage.setItem('isLoggedIn', true);
   }
   
