@@ -14,9 +14,6 @@ import 'date-fns';
 import Grid from '@material-ui/core/Grid';
 import DateFnsUtils from '@date-io/date-fns';
 
-function addData(props) {
-
-}
 
 export default function FormDialog(props) {
 

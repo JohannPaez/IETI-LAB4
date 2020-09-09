@@ -1,17 +1,17 @@
 import React from 'react';
-import Avatar from '@material-ui/core/Avatar';
 import Button from '@material-ui/core/Button';
 import CssBaseline from '@material-ui/core/CssBaseline';
 import FormControl from '@material-ui/core/FormControl';
 import Input from '@material-ui/core/Input';
 import InputLabel from '@material-ui/core/InputLabel';
-import LockIcon from '@material-ui/icons/LockOutlined';
 import Paper from '@material-ui/core/Paper';
 import Typography from '@material-ui/core/Typography';
 import './Login.css';
+import {Link, withRouter} from 'react-router-dom';
+import SidebarPage from './SidebarPage';
 
 
-export default class Login extends React.Component{
+export class Login extends React.Component{
 
     constructor(props) {
         super(props);  
@@ -19,11 +19,17 @@ export default class Login extends React.Component{
         this.handleEmailChange = this.handleEmailChange.bind(this);
         this.handlePassChange = this.handlePassChange.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
-        localStorage.setItem('email', 'johann.paez@mail.escuelaing.edu.co');
-        localStorage.setItem('passwd', 'Prueba123@');
+        if (localStorage.getItem('users') == null) {
+            localStorage.setItem('users', '[{"username": "Johann Paez", "email": "johann.paez@mail.escuelaing.edu.co", "passwd": "Prueba123@"}, {"username": "Johann Paez", "email": "najoh2907@hotmail.com", "passwd": "asd"}]');
+        }
     }
 
     render(){
+        if (localStorage.getItem('isLoggedIn'))  {
+            return (
+              <SidebarPage />
+            );
+        }
 
         return (
             <React.Fragment>
@@ -32,7 +38,7 @@ export default class Login extends React.Component{
                     <Paper className="paper">
                         
                         <Typography variant="h2">Task Planner</Typography>
-                        <form className="form" onSubmit={this.handleSubmit}>
+                        <div className="form" onSubmit={this.handleSubmit}>
                             <FormControl margin="normal" required fullWidth>
                                 <InputLabel htmlFor="email">Username</InputLabel>
                                 <Input id="email" name="email" autoComplete="email" autoFocus onChange={this.handleEmailChange} />
@@ -53,10 +59,14 @@ export default class Login extends React.Component{
                                 variant="contained"
                                 color="primary"
                                 className="submit"
+                                onClick = {this.handleSubmit}
                             >
                                 LOGIN
                             </Button>
-                        </form>
+                            <br></br>
+                            <br></br>
+                            <Link to ="/register"> Sign Up</Link>
+                        </div>
                     </Paper>
                 </main>
             </React.Fragment>
@@ -71,18 +81,28 @@ export default class Login extends React.Component{
 
     handlePassChange(e) {
         this.setState({
-            password: e.target.value
+            passwd: e.target.value
         });
     }
 
-    handleSubmit() {            
-        if (this.state.email === localStorage.getItem('email') && this.state.password === localStorage.getItem('passwd')) {            
-            //this.props.isLoggedIn();
-            localStorage.setItem('isLoggedIn', true);
-        } else {
+    handleSubmit() {     
+        const users = JSON.parse(localStorage.getItem("users"));        
+        var flag = false;
+        
+        for (var i = 0; i < users.length; i++) {            
+            if (this.state.email == users[i].email && this.state.passwd == users[i].passwd) {   
+                flag = true;
+                localStorage.setItem('isLoggedIn', true);                
+                this.props.history.push("/home");
+                return;
+            }
+        }
+        if (!flag) {
             alert("Usuario o contraseña incorrectos, intente nuevamente!")
         }
     }
 
 
 }
+
+export default withRouter(Login);

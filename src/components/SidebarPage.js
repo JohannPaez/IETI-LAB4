@@ -20,6 +20,7 @@ import TodoApp from './TodoApp';
 import CloseIcon from '@material-ui/icons/Close';
 import App from '../App';
 
+
 const drawerWidth = 240;
 
 const useStyles = makeStyles((theme) => ({
@@ -98,7 +99,7 @@ export default function SidebarPage() {
   };
 
   const logout = () => {
-    localStorage.clear();
+    localStorage.removeItem("isLoggedIn");
     setOpen(false);    
   }
 

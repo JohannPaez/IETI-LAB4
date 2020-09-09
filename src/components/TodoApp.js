@@ -3,16 +3,7 @@ import './App.css';
 import {TodoList} from "./TodoList";
 import 'react-datepicker/dist/react-datepicker.css';
 import moment from "moment";
-import Button from '@material-ui/core/Button';
-import TextField from '@material-ui/core/TextField';
-import {
-    MuiPickersUtilsProvider,
-    KeyboardDatePicker,
-  } from '@material-ui/pickers';
-
 import 'date-fns';
-import Grid from '@material-ui/core/Grid';
-import DateFnsUtils from '@date-io/date-fns';
 import FormDialog from './Dialogo';
 import AddIcon from '@material-ui/icons/Add';
 import Fab from '@material-ui/core/Fab';

@@ -21,11 +21,7 @@ export default function CardLab (props) {
     
     });
     const classes = useStyles();
-    const estilo = {
-        alLado: {        
-            float: 'left'
-        }
-    }
+    
 
     const myList = [
         {"key": "Description", "value": props.description}, 
