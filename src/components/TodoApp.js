@@ -216,7 +216,7 @@ export default class TodoApp extends Component {
                     state = {this.state}
                 />
                 <br/>
-                <div style = {{overflowY: 'scroll', height: '500px', width: '100%'}}>
+                <div style = {{overflowY: 'scroll', height: '400px', width: '100%'}}>
                     <TodoList todoList={this.state.isFilter ? this.state.itemsFilter: this.state.items}/>                            
                 </div>
                 <br></br>
