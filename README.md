@@ -7,6 +7,21 @@ This project was bootstrapped with [Create React App](https://github.com/faceboo
   
   
   **IMPORTANTE:** Para poder utilizar el aplicativo es necesario instalar las dependencias primero con el comando **npm install**.
+## Datos de Logeo
+
+**Correo**: johann.paez@mail.escuelaing.edu.co
+
+**Contraseña**: Prueba123@
+
+**Nota**: Si no desea utilizar estos datos de logeo, puede usar la opción de registro para entrar con el usuario que desee.
+
+## Despliegue de la Aplicación
+
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://gentle-scrubland-60628.herokuapp.com/)
+[![Deploy to Azure](https://aka.ms/deploytoazurebutton)](https://storageietilab4.z13.web.core.windows.net/)
+
+## Enunciado
+El enunciado del laboratorio está disponible [aquí](https://github.com/ieti-eci/1.4-react-js-task-planner-part2).
 
 ## Autor
 Johann Sebastian Páez Campos - Laboratorio 04 IETI 10/09/2020
